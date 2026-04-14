@@ -70,15 +70,37 @@ i:active {
 
 }
 
+#Text_noir
+{
+    color: black;
+}
+
+.PVedette {
+    background-color: #969393;
+    border: #b9b7b7;
+    border-radius: 10%;
+    padding: 1rem 1.5rem;
+    color: white;
+    display: inline;
+    .Text_noir {
+    color: black;
+}
+
 footer {
     position: fixed;
-
     bottom: 0%;
     left: 0rem;
     background-color: #e2e4df;
     z-index: 300;
 }
 
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
 @media (min-width: 426px) and (max-width: 1024px) {
     #NomSite:hover {
 

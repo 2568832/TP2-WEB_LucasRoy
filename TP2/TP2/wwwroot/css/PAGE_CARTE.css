@@ -1,11 +1,13 @@
-body {
+/*body {
     background-attachment: fixed;
-    background-image: url('../img/BackGround/luxury-plain-green-gradient-abstract-studio-background-empty-room-with-space-your-text-picture.jpg');
+    background-image: url('/Images/BackGround/luxury-plain-green-gradient-abstract-studio-background-empty-room-with-space-your-text-picture.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+}*/
+* p {
+    text-align: center;
 }
-
 .text-danger {
 
     filter: brightness(2) saturate(2);
@@ -14,6 +16,7 @@ body {
 
 main>div {
     color: aliceblue;
+
 }
 
 .border {
@@ -31,6 +34,7 @@ main>div {
 .Selection_Carte_Zone a {
     color: black;
     font-family: serif;
+    
 
 }
 
@@ -45,5 +49,7 @@ main>div {
 
 .border-hover-red:hover a p {
     background-color: rgb(243, 154, 154);
+    
+    border-radius: 15px
 }
 

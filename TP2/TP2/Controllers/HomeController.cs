@@ -1,21 +1,23 @@
+using System.Linq;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TP2.Models;
+
 
 namespace TP2.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private BaseDeDonnees _baseDeDonnees { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(BaseDeDonnees baseDeDonnees)
         {
-            _logger = logger;
+            _baseDeDonnees = baseDeDonnees;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_baseDeDonnees.Compagnies.ToList());
         }
 
         public IActionResult Privacy()

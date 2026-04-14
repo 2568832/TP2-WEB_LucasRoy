@@ -1,3 +1,5 @@
+using TP2.Models;
+
 namespace TP2
 {
     public class Program
@@ -8,6 +10,9 @@ namespace TP2
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews(); // Permet MVC
+
+            builder.Services.AddSingleton<BaseDeDonnees>();
 
             var app = builder.Build();
 
@@ -25,6 +30,9 @@ namespace TP2
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+                
+
+
 
             app.Run();
         }

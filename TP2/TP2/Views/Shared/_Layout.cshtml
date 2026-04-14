@@ -6,28 +6,28 @@
     <title>@ViewData["Title"] - TP2</title> <!-- Peut être pas défini-->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/TP2.styles.css" asp-append-version="true" />
+    
 
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"></script>
+    
     <!-- Fontawsome -->
     <script src="https://kit.fontawesome.com/f6759a0638.js" crossorigin="anonymous"></script>
-
+    
     <!-- Mon Css -->
-    <link rel="stylesheet" href="../assets/css/PAGE_CARTE.css">
-    <link rel="stylesheet" href="../assets/css/Décore.css">
+    <link rel="stylesheet" href="/css/PAGE_CARTE.css">
+    <link rel="stylesheet" href="/css/Décore.css">
+    <link rel="stylesheet" href="/css/Menu.css">
+
+
+    @* @RenderSection("CSS", false) *@
 </head>
 <body>
     <Header>
         <div class="text-center">
             <h1 id="NomSite" class="w-100">CHOIX</h1>
-            <a href="./Menue.html"><i class="fa-solid fa-house" id="Home"></i></a>
+            <a href="~/Home/Index"><i class="fa-solid fa-house" id="Home"></i></a>
             <a href="./favoris.html"><i class="fa-regular fa-star" id="SelectFavorie"></i></a>
-            <a href="./Recherche.html"><i class="fa-solid fa-magnifying-glass" id="Selection_Recherche"></i></a>
+            <a href="~/Enfant/Recherche"><i class="fa-solid fa-magnifying-glass" id="Selection_Recherche"></i></a>
         </div>
     </Header>
     <main class="container">

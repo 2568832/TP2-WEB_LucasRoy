@@ -8,7 +8,7 @@
         public bool Vedette { get; set; }
 
         public string Model { get; set; }
-        public string Prix { get; set; }
+        public double Prix { get; set; }
         public string PerformanceAI { get; set; }
         public string RésolutionPriorisé { get; set; }
         public string ConsomationMaxEn_Watt {  get; set; }
@@ -18,6 +18,10 @@
         public string Description { get; set; }
         public Compagnie compagnie { get; set; }
         public int CompagnieID { get; set; }
+
+        public string imgURL { get; set; }
+
+        
 
     }
 }

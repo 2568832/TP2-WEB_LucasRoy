@@ -15,20 +15,24 @@
 }
 
 main>div {
+    height: 200%;
     color: aliceblue;
-
+    
 }
 
 .border {
     transition: 2s;
-    border-radius: 3%
+    border-radius: 10px;
+    
+    
+    
 }
 
 .border-hover-red:hover {
     border-color: rgb(247, 72, 72) !important;
     transition: border-color 0.1s ease-in-out;
-    /* Optionnel : pour un effet fluide */
-    border-radius: 6%
+    border-radius: 6%;
+    
 }
 
 .Selection_Carte_Zone a {

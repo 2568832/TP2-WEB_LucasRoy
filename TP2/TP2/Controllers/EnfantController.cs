@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TP2.Models;
+using TP2.ViewModels;
 
 namespace TP2.Controllers
 {
@@ -11,13 +12,57 @@ namespace TP2.Controllers
         { 
             _baseDeDonnees = baseDeDonnees;
         }
+
         [Route("/Enfant/Recherche")]
 
-        public IActionResult Recherche()
+        public IActionResult Recherche(CritereRechercheViewModel criteres)
         {
+            var model = new PageRechercheViewModel();
+            model.Criteres = criteres;
 
-            return View( _baseDeDonnees.Carte_Graphiques.ToList());
+            var query = _baseDeDonnees.Carte_Graphiques.AsQueryable();
+
+            // Motclé
+            if (criteres.MotsCles != null && criteres.MotsCles != "")
+            {
+               
+                query = query.Where(c =>
+                    c.Nom.ToLower().Contains(criteres.MotsCles.ToLower()) ||
+                    c.Description.ToLower().Contains(criteres.MotsCles.ToLower())
+                );
+            }
+
+            // Prix min
+            if (criteres.Min.HasValue)
+                query = query.Where(c => c.Prix >= criteres.Min.Value);
+
+            // Prix max
+            if (criteres.Max.HasValue)
+                query = query.Where(c => c.Prix <= criteres.Max.Value);
+
+            // Vedette
+            if (criteres.Vedette == "oui")
+                query = query.Where(c => c.Vedette == true);
+
+            if (criteres.Vedette == "non")
+                query = query.Where(c => c.Vedette == false);
+
+            // Compagnies
+            var compagnies = new List<int>();
+            if (criteres.CompagnieNVIDIA) compagnies.Add(1);
+            if (criteres.CompagnieIntel) compagnies.Add(3);
+            if (criteres.CompagnieAMD) compagnies.Add(2);
+
+            if (compagnies.Count > 0)
+                query = query.Where(c => compagnies.Contains(c.CompagnieID));
+
+            model.Resultat = query.ToList();
+
+            return View(model);
         }
+
+
+
 
         [Route("/Enfant/Detail/{id:int}")]
         [Route("/Enfant/{id:int}")]

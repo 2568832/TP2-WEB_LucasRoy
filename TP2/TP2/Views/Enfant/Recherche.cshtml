@@ -1,99 +1,119 @@
 ﻿@using TP2.Models
-@model List<Carte_Graphique>
-
+@using TP2.ViewModels
+@model PageRechercheViewModel
 
 <div class="Recherche">
     <form class="row text-center" action="~/Enfant/Recherche" method="get">
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                 Click pour recherche
             </button>
-            <ul class="dropdown-menu">
-                <section class="container my-4">
-                    <h1 class="mb-4">Recherche</h1>
 
-                    <form action="https://www.w3schools.com/action_page.php" method="POST"
-                          class="border p-4 rounded bg-light">
-                        <div class="row mb-3">
-                            <!-- RECHERCHE CARTES -->
-                            <div class="col-md-6">
-                                <label for="motcle" class="form-label">Recherche par mots-clés</label>
-                                <input type="text" id="motcle" name="MotsCles" class="form-control"
-                                       placeholder="Saisir un ou des mots-clés">
-                            </div>
+            <ul class="dropdown-menu p-4">
 
-                            <!-- MAX _ MIN -->
-                            <div class="col-md-6">
-                                <label class="form-label">Prix (min / max)</label>
-                                <div class="input-group">
-                                    <input type="number" name="min" class="form-control" placeholder="Min"
-                                           min="0">
-                                    <input type="number" name="max" class="form-control" placeholder="Max"
-                                           min="0">
-                                </div>
-                            </div>
-                        </div>
+                <h1 class="mb-4">Recherche</h1>
 
-                        <!--Vedette-->
+                <!-- Mots-clés -->
+                <div class="mb-3">
+                    <label class="form-label">Recherche par mots-clés</label>
+                    <input type="text" name="MotsCles" class="form-control"
+                           value="@Model.Criteres.MotsCles"
+                           placeholder="Saisir un ou des mots-clés">
+                </div>
 
-                        <div class="mb-3">
-                            <label for="vedette" class="form-label">Carte vedette</label>
-                            <select id="vedette" name="vedette" class="form-select">
-                                <option value="peuimporte">Peu importe</option>
-                                <option value="oui">Oui</option>
-                                <option value="non">Non</option>
-                            </select>
-                        </div>
+                <!-- Prix min/max -->
+                <div class="mb-3">
+                    <label class="form-label">Prix (min / max)</label>
+                    <div class="input-group">
+                        <input type="number" name="Min" class="form-control"
+                               value="@Model.Criteres.Min" placeholder="Min" min="0">
 
-                        <!-- Compagnie selection -->
-                        <div class="mb-3">
-                            <label class="form-label">Compagnie</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="CompagnieNVDIA"
-                                       value="true" checked>
-                                <label class="form-check-label">NVIDIA</label>
-                            </div>
+                        <input type="number" name="Max" class="form-control"
+                               value="@Model.Criteres.Max" placeholder="Max" min="0">
+                    </div>
+                </div>
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="CompagnieIntel" value="true"
-                                       checked>
-                                <label class="form-check-label">INTEL</label>
-                            </div>
+                <!-- Vedette -->
+                <div class="mb-3">
+                    <label class="form-label">Carte vedette</label>
+                    <select name="Vedette" class="form-select">
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="CompagnieAMD" value="true"
-                                       checked>
-                                <label class="form-check-label">AMD</label>
-                            </div>
-                        </div>
+                        @if (Model.Criteres.Vedette == "peuimporte")
+                        {
+                            <option value="peuimporte" selected>Peu importe</option>
+                        }
+                        else
+                        {
+                            <option value="peuimporte">Peu importe</option>
+                        }
 
-                        <!-- Boutons -->
-                        <div class="d-flex gap-3">
-                            <button type="reset" class="btn btn-secondary">Effacer</button>
-                            <button type="submit" class="btn btn-primary">Rechercher</button>
-                        </div>
-                    </form>
-                </section>
+                        @if (Model.Criteres.Vedette == "oui")
+                        {
+                            <option value="oui" selected>Oui</option>
+                        }
+                        else
+                        {
+                            <option value="oui">Oui</option>
+                        }
+
+                        @if (Model.Criteres.Vedette == "non")
+                        {
+                            <option value="non" selected>Non</option>
+                        }
+                        else
+                        {
+                            <option value="non">Non</option>
+                        }
+
+                    </select>
+                </div>
+
+                <!-- Compagnies -->
+                <div class="mb-3">
+                    <label class="form-label">Compagnie</label>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="CompagnieNVIDIA" value="true"
+                               @(Model.Criteres.CompagnieNVIDIA ? "checked" : "")>
+                        <label class="form-check-label">NVIDIA</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="CompagnieIntel" value="true"
+                               @(Model.Criteres.CompagnieIntel ? "checked" : "")>
+                        <label class="form-check-label">INTEL</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="CompagnieAMD" value="true"
+                               @(Model.Criteres.CompagnieAMD ? "checked" : "")>
+                        <label class="form-check-label">AMD</label>
+                    </div>
+                </div>
+
+                <!-- Boutons -->
+                <div class="d-flex gap-3">
+                    <button type="reset" class="btn btn-secondary">Effacer</button>
+                    <button type="submit" class="btn btn-primary">Rechercher</button>
+                </div>
+
             </ul>
         </div>
-
     </form>
 </div>
-<!-- Sélection d'une carte -->
-<!-- rangée 1-->
 
-<p class="justify-content-center text-center py-3 px-3 Text_noir"> CARTES : </p>
-@foreach (var item in Model)
-{
-    <div class="row justify-content-center text-center py-3 px-3 ">
-        
+<!-- Résultats -->
+<p class="text-center py-3 Text_noir">CARTES :</p>
 
-        <div class="col-lg-4 col-12 m-2 border text-end border-hover-red">
+<div class="row justify-content-center text-center py-3 px-3">
+    @foreach (var item in Model.Resultat)
+    {
+
+        <div class="col-lg-3 col-11 m-2 border text-end border-hover-red">
             <a href="~/Enfant/Detail/@(item.ID)">
-                <p>@item.Nom</p><img class="img-fluid" src="@item.imgURL" alt="@item.Model">
+                <p>@(item.Nom)</p>
+                <img class="img-fluid" src="@(item.imgURL)" alt="@(item.Model)">
             </a>
-
         </div>
-    </div>
-}
+    }
+</div>

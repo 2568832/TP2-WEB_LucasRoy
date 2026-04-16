@@ -2,14 +2,15 @@
 {
     public class CritereRechercheViewModel
     {
-        //    public string ChoixPourPersonnageVedette { get; set; }
-        //    public bool CompagnieNVDIA { get; set; }
-        //    public bool CompagnieIntel { get; set; }
-        //    public bool CompagnieAMD { get; set; }
-        //    public int? min { get; set; }
-        //    public int? max { get; set; }
-        //    public string MotsCles { get; set; }
+        public string? MotsCles { get; set; }
 
+        public int? Min { get; set; }
+        public int? Max { get; set; }
 
+        public string? Vedette { get; set; } // "oui", "non", "peuimporte"
+
+        public bool CompagnieNVIDIA { get; set; }
+        public bool CompagnieIntel { get; set; }
+        public bool CompagnieAMD { get; set; }
     }
 }

@@ -12,6 +12,11 @@ namespace TP2.Controllers
         { 
             _baseDeDonnees = baseDeDonnees;
         }
+        [Route("/Enfant/favoris")]
+        public IActionResult favoris()
+        {
+            return View(_baseDeDonnees.Carte_Graphiques.ToList());
+        }
 
         [Route("/Enfant/Recherche")]
 
@@ -37,7 +42,7 @@ namespace TP2.Controllers
                 query = query.Where(c => c.Prix >= criteres.Min.Value);
 
             // Prix max
-            if (criteres.Max.HasValue)
+            if (criteres.Max.HasValue) // quand il a la valeur, ne pas oublié comment l'utiliser
                 query = query.Where(c => c.Prix <= criteres.Max.Value);
 
             // Vedette

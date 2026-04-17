@@ -10,10 +10,9 @@
         public string Model { get; set; }
         public double Prix { get; set; }
         public string PerformanceAI { get; set; }
-        public string RésolutionPriorisé { get; set; }
         public string ConsomationMaxEn_Watt {  get; set; }
         public string Mémoire_vidéo { get; set; }
-        public string ResolutionPriorisé { get; set; }
+        public string ResolutionPriorise { get; set; }
         public string InfoIA { get; set; }
         public string Description { get; set; }
         public Compagnie compagnie { get; set; }

@@ -27,6 +27,7 @@
             Carte_Graphiques.Add(new Carte_Graphique() { CompagnieID = 3, ID = 11, imgURL = "/Images/NVIDIA_CARTES/B580.webp", Vedette = false, Nom = "B580", Model = "Intel Arc B580", Prix = 249.99, PerformanceAI = "90-110 TOPs", RésolutionPriorisé = "1080p", ConsomationMaxEn_Watt = "150W-180W", Mémoire_vidéo = "8GB GDDR6", InfoIA = "Compatible avec XeSS pour améliorer les performances en 1080p.", Description = "Une carte graphique entrée/milieu de gamme idéale pour le 1080p avec un excellent rapport qualité‑prix." });
             Carte_Graphiques.Add(new Carte_Graphique() { CompagnieID = 3, ID = 12, imgURL = "/Images/NVIDIA_CARTES/A770.png", Vedette = false, Nom = "A770", Model = "Intel Arc A770", Prix = 449.99, PerformanceAI = "130 TOPs", RésolutionPriorisé = "1080p", ConsomationMaxEn_Watt = "225W", Mémoire_vidéo = "16GB GDDR6", InfoIA = "Compatible avec XeSS, l’upscaling IA d’Intel.", Description = "Une carte performante pour le 1440p, offrant un excellent rapport performance/prix et un support logiciel en constante amélioration." });
             
+
             // Lier les ojet enfants aux parents
 
             foreach (var C in Compagnies)

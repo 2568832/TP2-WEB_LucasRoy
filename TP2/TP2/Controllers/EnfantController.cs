@@ -25,13 +25,13 @@ namespace TP2.Controllers
             var model = new PageRechercheViewModel();
             model.Criteres = criteres;
 
-            var query = _baseDeDonnees.Carte_Graphiques.AsQueryable();
+            var objRechercher = _baseDeDonnees.Carte_Graphiques.AsQueryable(); // Convertisseur de IEnumerable a IQueryable 
 
             // Motclé
             if (criteres.MotsCles != null && criteres.MotsCles != "")
             {
                
-                query = query.Where(c =>
+                objRechercher = objRechercher.Where(c =>
                     c.Nom.ToLower().Contains(criteres.MotsCles.ToLower()) ||
                     c.Description.ToLower().Contains(criteres.MotsCles.ToLower())
                 );
@@ -39,18 +39,18 @@ namespace TP2.Controllers
 
             // Prix min
             if (criteres.Min.HasValue)
-                query = query.Where(c => c.Prix >= criteres.Min.Value);
+                objRechercher = objRechercher.Where(c => c.Prix >= criteres.Min.Value);
 
             // Prix max
             if (criteres.Max.HasValue) // quand il a la valeur, ne pas oublié comment l'utiliser
-                query = query.Where(c => c.Prix <= criteres.Max.Value);
+                objRechercher = objRechercher.Where(c => c.Prix <= criteres.Max.Value);
 
             // Vedette
             if (criteres.Vedette == "oui")
-                query = query.Where(c => c.Vedette == true);
+                objRechercher = objRechercher.Where(c => c.Vedette == true);
 
             if (criteres.Vedette == "non")
-                query = query.Where(c => c.Vedette == false);
+                objRechercher = objRechercher.Where(c => c.Vedette == false);
 
             // Compagnies
             var compagnies = new List<int>();
@@ -59,9 +59,9 @@ namespace TP2.Controllers
             if (criteres.CompagnieAMD) compagnies.Add(2);
 
             if (compagnies.Count > 0)
-                query = query.Where(c => compagnies.Contains(c.CompagnieID));
+                objRechercher = objRechercher.Where(c => compagnies.Contains(c.CompagnieID));
 
-            model.Resultat = query.ToList();
+            model.Resultat = objRechercher.ToList();
 
             return View(model);
         }
